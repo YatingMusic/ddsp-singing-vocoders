@@ -1,12 +1,15 @@
 # DDSP Singing Voice Vocoders
+Authors: Da-Yi Wu, Wen-Yi Hsiao, Fu-Rong Yang, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang
 
-A collection of ddsp-based singing voice vocoders.
+[**Paper**]() | [**Audio Demo**]() 
+
 
 Official PyTorch implementation of ISMIR2022 paper "SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis".
 
-Authors: Da-Yi Wu, Wen-Yi Hsiao, Fu-Rong Yang, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang
+A collection of ddsp-based singing voice vocoders.
 
-[Paper]() | [Audio Demo]()
+
+
 
 ## A. Installation
 ```bash
