@@ -167,19 +167,3 @@ class AudioDataset(Dataset):
 
     def __len__(self):
         return len(self.paths)
-
-
-if __name__ == '__main__':
-    dataset = AudioDataset(
-        '/volume/wayne-nfs/ai-music-wayne/WavAudioGen/ddsp-v2/dataset/cnpop/audio/24k/train_full',
-        waveform_sec=2,
-        hop_size=240,
-        sample_rate=24000)
-
-    result = dataset[380]
-    print('===========')
-    for k, v in result.items():
-        if k != 'name':
-            print(k, v.shape)
-        else:
-            print(k, v)

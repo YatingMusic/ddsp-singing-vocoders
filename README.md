@@ -1,7 +1,7 @@
 # DDSP Singing Voice Vocoders
 Authors: Da-Yi Wu\*, Wen-Yi Hsiao\*, Fu-Rong Yang\*, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang
 
-[**Paper**]() | [**Audio Demo**]() 
+[**Paper**]() | [**Demo**]() 
 
 
 Official PyTorch implementation of ISMIR2022 paper "SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis".
@@ -70,7 +70,6 @@ python main.py --config ./configs/sawsinsub.yaml  \
   booktitle = {Proc. International Society for Music Information Retrieval},
   year      = {2022},
 }
-
 ```
 
 

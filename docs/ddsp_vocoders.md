@@ -27,9 +27,10 @@ If you would like to know more about impelementation details of syntehsizers, pl
 
 ## B. Future Work
 1. Mel2Ctrl
-2. Can use f0 from AM?
+2. Can we use f0 from AM?
 3. LTV-FIR filter
-4. 
+4. Sourece: f0,  trainable blending source?
+5. Trasient Modeling
 
 ---
 ## C. References
