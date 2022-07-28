@@ -15,25 +15,27 @@ In this repository:
 pip install -r requirements.txt 
 ```
 ## B. Dataset
-please refer to [doc](./docs/dataset.md) for more details
+Please refer to [dataset.md](./docs/dataset.md) for more details.
 
 ## C. Training
 
 Train vocoders from scratch. 
-1. Please 
-2. Modify the configuration file `..config/<model_name>.yaml`
-3. Run the following command:
+1. Modify the configuration file `..config/<model_name>.yaml`
+2. Run the following command:
 ```bash
 # SawSing as an example
 python main.py --config ./configs/sawsinsub.yaml \
                --stage  training \
                --model SawSinSub
 ```
+3. Change `--model` argument to try different vocoders. Currently, we have 5 options: `SawSinSub` (Sawsing), `Sins` (DDSP-Add), ` DWS` (DWTS), `Full`, ` SawSub`. For more details, please refer to our documentation - [DDSP Vocoders](./docs/ddsp_vocoders.md).
+
+
 ## D. Validation
 Run validation: compute loss and real-time factor (RTF).
 
-* Modify the configuration file  `..config/<model_name>.yaml`
-* Run the following command:
+1. Modify the configuration file  `..config/<model_name>.yaml`
+2. Run the following command:
 
 ```bash
 # SawSing as an example
@@ -57,7 +59,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
 ```
 
 ## F. More Information
-* [DDSP-based Singing Voice Vocoders]()
+* [DDSP Vocoders](./docs/ddsp_vocoders.md)
 * [Synthesizer Design](./docs/synthesizer_design.md)
 
 ## G. Citing
