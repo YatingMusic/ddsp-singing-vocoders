@@ -1,5 +1,5 @@
 # Synthesizer Design
-In this documentation, we elaborate how to code different synthesizers. 
+In this documentation, we elaborate how to code different synthesizers in PyTorch.
 
 ## A. Sinusoidal Oscillator
 
