@@ -2,29 +2,20 @@ import os
 import sys
 import time
 import shutil
+import numpy as np
+import soundfile as sf
 
 import torch
 
-import numpy as np
 from logger.saver import Saver
 from logger import utils
 
-import soundfile as sf
 
-
-def half_learning_rate(optimizer):
-    old_lr = None
-    for param_group in optimizer.param_groups:
-        old_lr = param_group['lr']
-        new_lr = old_lr  * 0.5
-        param_group['lr'] = new_lr
-    return old_lr, new_lr
-
-
-def render(args, model, path_mel_dir, dirname='gen'):
+def render(args, model, path_mel_dir, path_gendir='gen'):
     print(' [*] rendering...')
     model.eval()
 
+    # list files
     files = utils.traverse_dir(
         path_mel_dir, 
         extension='npy', 
@@ -32,8 +23,11 @@ def render(args, model, path_mel_dir, dirname='gen'):
         is_pure=True)
     num_files = len(files)
 
+     # intialization
     os.makedirs(path_gendir, exist_ok=True)
     rtf_all = []
+
+    # run
     with torch.no_grad():
         for fidx in range(num_files):
             fn = files[fidx]
@@ -69,7 +63,7 @@ def test(args, model, loss_func, loader_test, path_gendir='gen'):
     test_loss_mss = 0.
     test_loss_f0 = 0.
     
-    # intial variables
+    # intialization
     num_batches = len(loader_test)
     os.makedirs(path_gendir, exist_ok=True)
     rtf_all = []
