@@ -32,7 +32,6 @@ def render(args, model, path_mel_dir, dirname='gen'):
         is_pure=True)
     num_files = len(files)
 
-    path_gendir = os.path.join(args.env.expdir, dirname)
     os.makedirs(path_gendir, exist_ok=True)
     rtf_all = []
     with torch.no_grad():
@@ -60,19 +59,22 @@ def render(args, model, path_mel_dir, dirname='gen'):
             sf.write(path_pred, pred, args.data.sampling_rate)
 
 
-def test(args, model, loss_func, loader_test, dirname='gen'):
+def test(args, model, loss_func, loader_test, path_gendir='gen'):
     print(' [*] testing...')
+    print(' [*] output folder:', path_gendir)
     model.eval()
 
+    # losses
     test_loss = 0.
     test_loss_mss = 0.
     test_loss_f0 = 0.
     
+    # intial variables
     num_batches = len(loader_test)
-
-    path_gendir = os.path.join(args.env.expdir, dirname)
     os.makedirs(path_gendir, exist_ok=True)
     rtf_all = []
+
+    # run
     with torch.no_grad():
         for bidx, data in enumerate(loader_test):
             fn = data['name'][0]
@@ -90,7 +92,6 @@ def test(args, model, loss_func, loader_test, dirname='gen'):
             signal, f0_pred, _, (s_h, s_n) = model(data['mel'])
             ed_time = time.time()
 
-        
             # crop
             # print(signal.shape, data['audio'].shape)
             min_len = np.min([signal.shape[1], data['audio'].shape[1]])
@@ -133,6 +134,7 @@ def test(args, model, loss_func, loader_test, dirname='gen'):
     test_loss_mss     /= num_batches
     test_loss_f0      /= num_batches
 
+    # check
     print(' [test_loss] test_loss:', test_loss)
     print(' Real Time Factor', np.mean(rtf_all))
     return test_loss, test_loss_mss, test_loss_f0
@@ -226,10 +228,13 @@ def train(args, model, loss_func, loader_train, loader_test):
 
                 prev_save_time = cur_hour
                 # run testing set
+                path_testdir_runtime = os.path.join(
+                        args.env.expdir,
+                        'runtime_gen', 
+                        f'gen_{saver.global_step}_{cur_hour}')
                 test_loss, test_loss_mss, test_loss_f0 = test(
                     args, model, loss_func, loader_test,
-                     dirname=os.path.join(
-                        'runtime_gen', f'gen_{saver.global_step}_{cur_hour}'))
+                    path_gendir=path_testdir_runtime)
                 saver.log_info(
                     ' --- <validation> --- \nloss: {:.6f}. mss loss: {:.6f}, f0: {:.6f}'.format(
                         test_loss, test_loss_mss, test_loss_f0

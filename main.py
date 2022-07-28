@@ -41,6 +41,13 @@ def parse_args(args=None, namespace=None):
         required=False,
         help="path to existing model ckpt",
     )
+    parser.add_argument(
+        "-o",
+        "--output_dir",
+        type=str,
+        required=False,
+        help="path to synthesized audio files",
+    )
     return parser.parse_args(args=args, namespace=namespace)
 
 
@@ -102,7 +109,6 @@ if __name__ == '__main__':
     else:
         raise ValueError(f"Unknown Model: {cmd.model}")
     
-
     # load parameters
     if cmd.model_ckpt:
         model = utils.load_model_params(
@@ -125,5 +131,8 @@ if __name__ == '__main__':
     if cmd.stage == 'training':
         train(args, model, loss_func, loader_train, loader_valid)
     elif cmd.stage == 'inference':
-        test(args, model, loss_func, loader_valid, dirname='test_gen')
+        output_dir = 'valid_gen'
+        if cmd.output_dir:
+            output_dir = cmd.output_dir
+        test(args, model, loss_func, loader_valid, path_gendir=output_dir)
     
