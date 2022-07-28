@@ -6,10 +6,9 @@ Authors: Da-Yi Wu\*, Wen-Yi Hsiao\*, Fu-Rong Yang\*, Oscar Friedman, Warren Jack
 
 Official PyTorch implementation of ISMIR2022 paper "SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis".
 
-A collection of ddsp-based singing voice vocoders.
-
-
-
+In this repository:
+1. We present collection of ddsp-based singing voice vocoders.
+2. We demonstrate the design of synthesizers and vocoders in PyTorch.
 
 ## A. Installation
 ```bash
@@ -21,9 +20,11 @@ please refer to [doc](./docs/dataset.md) for more details
 ## C. Training
 
 Train vocoders from scratch. 
-1. Modify `..config/sawsinsub.yaml`
-2. Run the following command:
+1. Please 
+2. Modify the configuration file `..config/<model_name>.yaml`
+3. Run the following command:
 ```bash
+# SawSing as an example
 python main.py --config ./configs/sawsinsub.yaml \
                --stage  training \
                --model SawSinSub
@@ -31,10 +32,11 @@ python main.py --config ./configs/sawsinsub.yaml \
 ## D. Validation
 Run validation: compute loss and real-time factor (RTF).
 
-* modify `..config/sawsinsub.yaml`
-* run the following command:
+* Modify the configuration file  `..config/<model_name>.yaml`
+* Run the following command:
 
 ```bash
+# SawSing as an example
 python main.py --config ./configs/sawsinsub.yaml  \
               --stage inference \
               --model SawSinSub \
@@ -45,6 +47,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
 Synthesize audio file from existed mel-spectrograms.
 
 ```bash
+# SawSing as an example
 python main.py --config ./configs/sawsinsub.yaml  \
               --stage inference \
               --model SawSinSub \
@@ -54,12 +57,18 @@ python main.py --config ./configs/sawsinsub.yaml  \
 ```
 
 ## F. More Information
-* About [Synthesizer Design](./docs/synthesizer_design.md)
-* About [DDSP-based Singing Voice Vocoders]()
-
+* [DDSP-based Singing Voice Vocoders]()
+* [Synthesizer Design](./docs/synthesizer_design.md)
 
 ## G. Citing
 ```
+@article{diffsynth,
+  title={SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis},
+  author={Da-Yi Wu, Wen-Yi Hsiao, Fu-Rong Yang, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang},
+  booktitle = {Proc. International Society for Music Information Retrieval},
+  year      = {2022},
+}
+
 ```
 
 
