@@ -1,5 +1,5 @@
 # DDSP Singing Voice Vocoders
-Authors: Da-Yi Wu, Wen-Yi Hsiao, Fu-Rong Yang, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang
+Authors: Da-Yi Wu\*, Wen-Yi Hsiao\*, Fu-Rong Yang\*, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang
 
 [**Paper**]() | [**Audio Demo**]() 
 
@@ -42,7 +42,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
               --output_dir ./test_gen
 ```
 ## E. Inference
-Synthesize audio file from mel-spectrogram
+Synthesize audio file from existed mel-spectrograms.
 
 ```bash
 python main.py --config ./configs/sawsinsub.yaml  \
