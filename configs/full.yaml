@@ -1,0 +1,43 @@
+data:
+  block_size: 240
+  duration: 2
+  sampling_rate: 24000
+  # f1 full
+  train_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/f1/train-full
+  valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/f1/val
+  # valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/f1/test
+  # m1 full
+  # train_path: /volume/wayne-nas-ai-music/vocoder/dds-revised/data/m1/train-full
+  # valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/m1/val
+  # valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/m1/test
+  # f1 3min
+  # train_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/f1/train-3min
+  # valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/f1/val
+  # valid_path: /volume/wayne-nas-ai-music/vocoder/dds-revised/data/f1/test
+  # m1 3min
+  # train_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/m1/train-3min
+  # valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/m1/val
+  # valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/m1/test
+model:
+  n_mag_harmonic: 256
+  n_mag_noise: 80
+  n_harmonics: 150
+loss:
+  n_ffts: [1024, 512, 256, 128]
+device: cuda
+env:
+  expdir: exp/f1-full/full-256
+  # expdir: exp/m1-full/full-256
+  # expdir: exp/f1-3min/full-256
+  # expdir: exp/m1-3min/full-256
+  gpu: 0
+  gpu_id: 0
+inference:
+  batch_size: 1
+train:
+  batch_size: 16
+  epochs: 100000
+  interval_log: 10
+  interval_save: 500
+  interval_val: 500
+  lr: 0.002
