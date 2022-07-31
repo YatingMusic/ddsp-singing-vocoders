@@ -3,7 +3,7 @@ This document describe how to prepare the dataset.
 
 ## A. Preparation
 
-Due to the copyright issue, we cannot distrubute audio files and the mel-spectrograms of MPop600[1] dataset. However, readers can following the steps to build one from scratch. 
+Due to the copyright issue, we cannot distrubute the audio files and the mel-spectrograms of MPop600[1] dataset. However, readers can following the steps to build one from scratch. 
 
 ### 1. File Strutcure
 Organized the dataset as the following (or similar) structure.
