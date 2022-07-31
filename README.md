@@ -1,14 +1,12 @@
 # DDSP Singing Voice Vocoders
 Authors: Da-Yi Wu\*, Wen-Yi Hsiao\*, Fu-Rong Yang\*, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang
 
-[**Paper**]() | [**Demo**]() 
+[**Paper**](./docs/ismir_22_sawsing.pdf) | [**Demo**]() 
 
 
 Official PyTorch implementation of ISMIR2022 paper "SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis".
 
-In this repository:
-1. We present a collection of ddsp-based singing voice vocoders.
-2. We demonstrate how to code various synthesizers and vocoders in PyTorch.
+In this repository, we present a collection of ddsp-based vocoders for singing voice. Our experiments shows that DDSP-based vocoders can generate satisfying results with limited resources (1 GPU, 3-hour training data).
 
 ## A. Installation
 ```bash
@@ -28,7 +26,7 @@ python main.py --config ./configs/sawsinsub.yaml \
                --stage  training \
                --model SawSinSub
 ```
-3. Change `--model` argument to try different vocoders. Currently, we have 5 options: `SawSinSub` (Sawsing), `Sins` (DDSP-Add), ` DWS` (DWTS), `Full`, ` SawSub`. For more details, please refer to our documentation - [DDSP Vocoders](./docs/ddsp_vocoders.md).
+3. Change `--model` argument to try different vocoders. Currently, we have 5 models: `SawSinSub` (Sawsing), `Sins` (DDSP-Add), ` DWS` (DWTS), `Full`, ` SawSub`. For more details, please refer to our documentation - [DDSP Vocoders](./docs/ddsp_vocoders.md).
 
 About our training resources:
 <GPU>
@@ -62,7 +60,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
 
 ## F. More Information
 * [DDSP Vocoders](./docs/ddsp_vocoders.md)
-* [Synthesizer Design](./docs/synthesizer_design.md)
+* [Synthesizer Design](./docs/synth_demo.ipynb)
 
 ## G. Citing
 ```
