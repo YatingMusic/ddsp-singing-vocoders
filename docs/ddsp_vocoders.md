@@ -1,8 +1,6 @@
 # DDSP Vocoders
 
 ## A. Meet Our Vocoders
-![](./figs/framework_overview.png)
-
 All the vocoders we presented are **'harmonic plus noise'** models[4]. According to their harmonic synthesizers, we have the following models:
 
 |  Model Name  | Harmonic Synthesizer |   Note              |

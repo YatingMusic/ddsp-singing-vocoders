@@ -24,7 +24,7 @@ class WavetableSynthesizer(nn.Module):
         self.wavetable = wavetable
         self.num_wavetables, self.len_wavetable = wavetable.shape
         self.block_size = block_size
-        self.is_lpf = is_lpf
+        self.is_lpf = is_lpf # for anti-aliasing
 
     def forward(self, f0_frames, amplitudes_frames, initial_phase=None):
         '''
@@ -86,10 +86,11 @@ class WavetableSynthesizer(nn.Module):
 
 class HarmonicOscillator(nn.Module):
     """synthesize audio with a bank of harmonic oscillators"""
-    def __init__(self, fs, oscillator=torch.sin):
+    def __init__(self, fs, oscillator=torch.sin, is_remove_above_nyquist=True):
         super().__init__()
         self.fs = fs
         self.oscillator = oscillator
+        self.is_remove_above_nyquist = is_remove_above_nyquist
 
     def forward(self, f0, amplitudes, initial_phase=None):
         '''
@@ -111,7 +112,14 @@ class HarmonicOscillator(nn.Module):
         phase  = torch.cumsum(2 * np.pi * f0 / self.fs, axis=1) + initial_phase
         phases = phase * torch.arange(1, n_harmonic + 1).to(phase)
         
-        signal = (self.oscillator(phases) * amplitudes).sum(-1, keepdim=True)
+        # anti-aliasing
+        if self.is_remove_above_nyquist:
+            amp = remove_above_nyquist(amplitudes, f0, self.fs)
+        else:
+            amp = amplitudes.to(phase)
+
+        # signal
+        signal = (self.oscillator(phases) * amp).sum(-1, keepdim=True)
         signal *= mask
         signal = signal.squeeze(-1)
         
@@ -156,12 +164,14 @@ class WaveGeneratorOscillator(nn.Module):
         phase  = torch.cumsum(2 * np.pi * f0 / self.fs, axis=1) + initial_phase
         phases = phase * torch.arange(1, self.n_harmonics + 1).to(phase)
         
+        # anti-aliasing
         amplitudes = self.amplitudes * self.ratio
         if self.is_remove_above_nyquist:
             amp = remove_above_nyquist(amplitudes.to(phase), f0, self.fs)
         else:
             amp = amplitudes.to(phase)
-            
+        
+        # signal
         signal = (torch.sin(phases) * amp).sum(-1, keepdim=True)
         signal *= mask
         signal = signal.squeeze(-1)
