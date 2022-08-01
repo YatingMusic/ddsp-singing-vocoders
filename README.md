@@ -46,7 +46,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
               --output_dir ./test_gen
 ```
 ## E. Inference
-Synthesize audio file from existed mel-spectrograms.
+Synthesize audio file from existed mel-spectrograms. The code and specfication for extracting mel-spectrograms can be found in [`preprocess.py`](./preprocess.py). 
 
 ```bash
 # SawSing as an example
