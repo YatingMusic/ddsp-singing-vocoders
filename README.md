@@ -1,5 +1,5 @@
 # DDSP Singing Voice Vocoders
-Authors: Da-Yi Wu\*, Wen-Yi Hsiao\*, Fu-Rong Yang\*, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang
+Authors: Da-Yi Wu\*, [Wen-Yi Hsiao]()\*, Fu-Rong Yang\*, [Oscar Friedman](https://github.com/OscarFree), Warren Jackson, Scott Bruzenak, Yi-Wen Liu, [Yi-Hsuan Yang]()
 
 [**Paper**](./docs/ismir_22_sawsing.pdf) | [**Demo**](https://ddspvocoder.github.io/ismir-demo/) 
 
