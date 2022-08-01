@@ -99,7 +99,7 @@ if __name__ == '__main__':
             block_size=args.data.block_size)
 
     else:
-        raise ValueError(f"Unknown Model: {cmd.model}")
+        raise ValueError(f" [x] Unknown Model: {cmd.model}")
     
     # load parameters
     if cmd.model_ckpt:
@@ -122,9 +122,14 @@ if __name__ == '__main__':
     # stage
     if cmd.stage == 'training':
         train(args, model, loss_func, loader_train, loader_valid)
-    elif cmd.stage == 'inference':
+    elif cmd.stage == 'validation':
         output_dir = 'valid_gen'
         if cmd.output_dir:
             output_dir = cmd.output_dir
         test(args, model, loss_func, loader_valid, path_gendir=output_dir)
+    elif cmd.stage == 'inference':
+        # TBD
+        pass
+    else:
+          raise ValueError(f" [x] Unkown Stage: {cmd.stage }")
     
