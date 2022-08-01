@@ -40,7 +40,7 @@ Run validation: compute loss and real-time factor (RTF).
 ```bash
 # SawSing as an example
 python main.py --config ./configs/sawsinsub.yaml  \
-              --stage inference \
+              --stage validation \
               --model SawSinSub \
               --model_ckpt ./exp/f1-full/sawsinsub-256/ckpts/vocoder_27740_70.0_params.pt \
               --output_dir ./test_gen
@@ -59,8 +59,12 @@ python main.py --config ./configs/sawsinsub.yaml  \
 ```
 
 ## F. More Information
-* [DDSP Vocoders](./docs/ddsp_vocoders.md)
-* [Synthesizer Design](./docs/synth_demo.ipynb)
+* Checkpoints
+  * [SawSing](./exp/f1-full/sawsinsub-256/ckpts/)
+  * The full experiment records, reports and checkpoints can be found under the [`exp`](./exp/) folder.
+* Documentation
+  * [DDSP Vocoders](./docs/ddsp_vocoders.md)
+  * [Synthesizer Design](./docs/synth_demo.ipynb)
 
 ## G. Citing
 ```
