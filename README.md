@@ -66,7 +66,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
   * [DDSP Vocoders](./docs/ddsp_vocoders.md)
   * [Synthesizer Design](./docs/synth_demo.ipynb)
 
-## G. Citing
+## G. Citation
 ```
 @article{diffsynth,
   title={SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis},
