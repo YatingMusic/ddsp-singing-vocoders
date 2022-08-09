@@ -12,7 +12,7 @@ Official PyTorch implementation of ISMIR2022 paper "DDSP-based Singing Vocoders:
 In this repository:
 * We propose a novel singing vocoders based on subtractive synthesizer: **SawSing**
 * We present a collection of different ddsp singing vocoders
-* We demonstrate that ddsp singing vocoders have relatively small model size but can generate satisfying results under limited resources (1 GPU, 3-hour training data).
+* We demonstrate that ddsp singing vocoders have relatively small model size but can generate satisfying results with limited resources (1 GPU, 3-hour training data).
 
 ## A. Installation
 ```bash
