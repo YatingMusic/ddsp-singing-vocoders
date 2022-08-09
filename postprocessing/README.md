@@ -7,8 +7,8 @@ After finishing the paper, we found that the buzzing artifacts of unvoiced and s
 ### Usage
 * Run [`debuzz.ipynb`](./debuzz.ipynb)
 * In the `test-set` folder:
-    * debuzz: post-processed de-buzzing results
-    * part: separated harmonic and noise part signals
-    * pred: orignal predicted signals
+    * `debuzz`: post-processed de-buzzing results
+    * `part`: separated harmonic and noise part signals
+    * `pred`: orignal predicted signals
 
 Special thanks to [Oscar Friedman](https://github.com/OscarFree).
