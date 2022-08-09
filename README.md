@@ -64,7 +64,10 @@ python main.py --config ./configs/sawsinsub.yaml  \
               --output_dir ./test_gen
 ```
 
-## F. More Information
+## F. Post-Processing
+
+
+## G. More Information
 * Checkpoints
   * [SawSing](./exp/f1-full/sawsinsub-256/ckpts/)
   * The full experiment records, reports and checkpoints can be found under the [`exp`](./exp/) folder.
@@ -72,7 +75,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
   * [DDSP Vocoders](./docs/ddsp_vocoders.md)
   * [Synthesizer Design](./docs/synth_demo.ipynb)
 
-## G. Citation
+## H. Citation
 ```
 @article{diffsynth,
   title={SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis},
