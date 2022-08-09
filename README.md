@@ -10,9 +10,9 @@ Authors: Da-Yi Wu\*, [Wen-Yi Hsiao](https://github.com/wayne391)\*, [Fu-Rong Yan
 Official PyTorch implementation of ISMIR2022 paper "DDSP-based Singing Vocoders: A New Subtractive-based Synthesizer and A Comprehensive Evaluation".
 
 In this repository:
-* we propose a novel singing voice vocoders based on subtractive synthesizer: **SawSing**
-* we present a collection of ddsp-based singing voice vocoders for singing voice
-* we demonstrate that with only sinusoidal sources and LTV-FIR filters can generate satisfying results with limited resources (1 GPU, 3-hour training data).
+* We propose a novel singing voice vocoders based on subtractive synthesizer: **SawSing**
+* We present a collection of ddsp-based singing voice vocoders for singing voice
+* We demonstrate that with only ddsp-based singing voice vocoders have relatively small model size but can generate satisfying results using limited resources (1 GPU, 3-hour training data).
 
 ## A. Installation
 ```bash
@@ -65,6 +65,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
 ```
 
 ## F. Post-Processing
+In Sawsing, we found there is buzzing artifact in the harmonic parts, so we develop a post-processing codes to remove it. The method is simple yet effective --- applying a Voiced/Unvoiced mask on the harmonic part. For more details, please refer to [here](./postprocessing/).
 
 
 ## G. More Information
