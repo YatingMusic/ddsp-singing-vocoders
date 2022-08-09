@@ -9,7 +9,10 @@ Authors: Da-Yi Wu\*, [Wen-Yi Hsiao](https://github.com/wayne391)\*, [Fu-Rong Yan
 
 Official PyTorch implementation of ISMIR2022 paper "DDSP-based Singing Vocoders: A New Subtractive-based Synthesizer and A Comprehensive Evaluation".
 
-In this repository, we present a collection of ddsp-based vocoders for singing voice. Our experiments shows that DDSP-based vocoders can generate satisfying results with limited resources (1 GPU, 3-hour training data).
+In this repository:
+* we propose a novel singing voice vocoders based on subtractive synthesizer: **SawSing**
+* we present a collection of ddsp-based singing voice vocoders for singing voice
+* we demonstrate that using only sinusoidal sources and LTV-FIR filters can generate satisfying results with limited resources (1 GPU, 3-hour training data).
 
 ## A. Installation
 ```bash
