@@ -65,7 +65,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
 ```
 
 ## F. Post-Processing
-In Sawsing, we found there is buzzing artifact in the harmonic parts, so we develop a post-processing codes to remove it. The method is simple yet effective --- applying a Voiced/Unvoiced mask on the harmonic part. For more details, please refer to [here](./postprocessing/).
+In Sawsing, we found there are buzzing artifacta in the harmonic part singals, so we develop a post-processing codes to remove it. The method is simple yet effective --- applying a Voiced/Unvoiced mask on the harmonic part. For more details, please refer to [here](./postprocessing/).
 
 
 ## G. More Information
