@@ -36,7 +36,7 @@ There are some possible directions:
 * Applying UV mask. 
 
 ### B.3 End-to-End Training
-DDSP-based vocoders are data efficient, intepretable and lightweight, hence it has a potential to be integrated with acoustic model which makes the training of TTS or SVS in the end-to-end manner possible. We can also rethink the role of the mel-spectrogram. It could be replaced with control parameters of synthesizers, f0, UV mask and etc.
+DDSP-based vocoders are data efficient, intepretable and lightweight, hence it has a potential to be integrated with acoustic model which makes the end-to-end training of TTS or SVS possible. We could also rethink the role of the mel-spectrogram: It could be replaced with control parameters of synthesizers, f0, UV mask and etc.
 
 ---
 ## C. References
