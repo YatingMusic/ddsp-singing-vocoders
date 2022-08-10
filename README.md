@@ -4,7 +4,7 @@ Authors: [Da-Yi Wu](https://github.com/ericwudayi)\*, [Wen-Yi Hsiao](https://git
  **equal contribution*
  
  
-[**Paper**](./docs/ismir_22_sawsing.pdf) | [**Demo**](https://ddspvocoder.github.io/ismir-demo/) 
+[**Paper**](https://arxiv.org/abs/2208.04756) | [**Demo**](https://ddspvocoder.github.io/ismir-demo/) 
 
 
 Official PyTorch implementation of ISMIR2022 paper "DDSP-based Singing Vocoders: A New Subtractive-based Synthesizer and A Comprehensive Evaluation".
