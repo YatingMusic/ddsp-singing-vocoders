@@ -60,7 +60,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
               --stage inference \
               --model SawSinSub \
               --model_ckpt ./exp/f1-full/sawsinsub-256/ckpts/vocoder_27740_70.0_params.pt \
-              --input_dir  ./
+              --input_dir  <path-to-mel>
               --output_dir ./test_gen
 ```
 

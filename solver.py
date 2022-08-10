@@ -11,7 +11,7 @@ from logger.saver import Saver
 from logger import utils
 
 
-def render(args, model, path_mel_dir, path_gendir='gen'):
+def render(args, model, path_mel_dir, path_gendir='gen', is_part=False):
     print(' [*] rendering...')
     model.eval()
 
@@ -19,13 +19,11 @@ def render(args, model, path_mel_dir, path_gendir='gen'):
     files = utils.traverse_dir(
         path_mel_dir, 
         extension='npy', 
+        is_ext=False,
         is_sort=True, 
         is_pure=True)
     num_files = len(files)
-
-     # intialization
-    os.makedirs(path_gendir, exist_ok=True)
-    rtf_all = []
+    print(' > num_files:', num_files)
 
     # run
     with torch.no_grad():
@@ -34,7 +32,7 @@ def render(args, model, path_mel_dir, path_gendir='gen'):
             print('--------')
             print('{}/{} - {}'.format(fidx, num_files, fn))
 
-            path_mel = os.path.join(path_mel_dir, fn)
+            path_mel = os.path.join(path_mel_dir, fn) + '.npy'
             mel = np.load(path_mel)
             mel = torch.from_numpy(mel).float().to(args.device).unsqueeze(0)
             print(' mel:', mel.shape)
@@ -42,18 +40,31 @@ def render(args, model, path_mel_dir, path_gendir='gen'):
             # forward
             signal, f0_pred, _, (s_h, s_n) = model(mel)
 
-            # save
+            # path
             path_pred = os.path.join(path_gendir, 'pred', fn + '.wav')
+            if is_part:
+                path_pred_n = os.path.join(path_gendir, 'part', fn + '-noise.wav')
+                path_pred_h = os.path.join(path_gendir, 'part', fn + '-harmonic.wav')
             print(' > path_pred:', path_pred)
             
             os.makedirs(os.path.dirname(path_pred), exist_ok=True)
-            pred   = utils.convert_tensor_to_numpy(signal)
-            print('pred:', pred.shape)
+            if is_part:
+                os.makedirs(os.path.dirname(path_pred_h), exist_ok=True)
+
+            # to numpy
+            pred = utils.convert_tensor_to_numpy(signal)
+            if is_part:
+                pred_n = utils.convert_tensor_to_numpy(s_n)
+                pred_h = utils.convert_tensor_to_numpy(s_h)
             
+            # save
             sf.write(path_pred, pred, args.data.sampling_rate)
+            if is_part:
+                sf.write(path_pred_n, pred_n, args.data.sampling_rate)
+                sf.write(path_pred_h, pred_h, args.data.sampling_rate)
 
 
-def test(args, model, loss_func, loader_test, path_gendir='gen'):
+def test(args, model, loss_func, loader_test, path_gendir='gen', is_part=False):
     print(' [*] testing...')
     print(' [*] output folder:', path_gendir)
     model.eval()
@@ -87,7 +98,6 @@ def test(args, model, loss_func, loader_test, path_gendir='gen'):
             ed_time = time.time()
 
             # crop
-            # print(signal.shape, data['audio'].shape)
             min_len = np.min([signal.shape[1], data['audio'].shape[1]])
             signal        = signal[:,:min_len]
             data['audio'] = data['audio'][:,:min_len]
@@ -107,22 +117,35 @@ def test(args, model, loss_func, loader_test, path_gendir='gen'):
             test_loss_mss     += loss_mss.item() 
             test_loss_f0      += loss_f0.item()
 
-            # save
+            # path
             path_pred = os.path.join(path_gendir, 'pred', fn + '.wav')
             path_anno = os.path.join(path_gendir, 'anno', fn + '.wav')
+            if is_part:
+                path_pred_n = os.path.join(path_gendir, 'part', fn + '-noise.wav')
+                path_pred_h = os.path.join(path_gendir, 'part', fn + '-harmonic.wav')
 
             print(' > path_pred:', path_pred)
             print(' > path_anno:', path_anno)
 
             os.makedirs(os.path.dirname(path_pred), exist_ok=True)
             os.makedirs(os.path.dirname(path_anno), exist_ok=True)
+            if is_part:
+                os.makedirs(os.path.dirname(path_pred_h), exist_ok=True)
 
-            pred   = utils.convert_tensor_to_numpy(signal)
-            anno   = utils.convert_tensor_to_numpy(data['audio'])
+            # to numpy
+            pred  = utils.convert_tensor_to_numpy(signal)
+            anno  = utils.convert_tensor_to_numpy(data['audio'])
+            if is_part:
+                pred_n = utils.convert_tensor_to_numpy(s_n)
+                pred_h = utils.convert_tensor_to_numpy(s_h)
             
+            # save
             sf.write(path_pred, pred, args.data.sampling_rate)
             sf.write(path_anno, anno, args.data.sampling_rate)
-
+            if is_part:
+                sf.write(path_pred_n, pred_n, args.data.sampling_rate)
+                sf.write(path_pred_h, pred_h, args.data.sampling_rate)
+            
     # report
     test_loss /= num_batches
     test_loss_mss     /= num_batches

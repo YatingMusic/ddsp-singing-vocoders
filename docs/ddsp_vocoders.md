@@ -29,7 +29,7 @@ There are two vocoders based on sawtooth synthesizer: `SawSinSub` and `SawSub`. 
 We found early neural vocoders having glitch sound issues in long utterances. In speech this might not be an issue, however in singing voice where long notes are common this becomes critical. In DDSP singing vocoders we solve it with sinusoidal excitation signals. Recently, similar findings are mentioned in [5], which claming that this method "enhances the smoothness and continuity of harmonics". 
 
 ### B.2 Buzzing Artifacts in Unvoiced/Semi-Voicesd Consonants
-The buzzing artifacts of unvoiced and semi-voiced segments are from the harmonic part signals, and only occurs in the vocoders based on subtractive synthesizers (i.e. in model `SawSinSub`, `SawSub` and `Full`). Similar finding is discussed in [6]. Currently, we alleviate it by applying a Voiced/Unvoiced mask (UV mask) estimated from grdoun-truth data on the harmonic part singals. 
+The buzzing artifacts of unvoiced and semi-voiced segments are from the harmonic part signals, and only occurs in the vocoders based on subtractive synthesizers (i.e. in model `SawSinSub`, `SawSub` and `Full`). Similar finding is discussed in [6]. Currently, we alleviate it by applying a Voiced/Unvoiced mask (UV mask) estimated from predicted signals on the harmonic part singals. 
 
 There are some possible directions:
 * Use filters of better capacity, instead of LTV-FIR

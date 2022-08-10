@@ -1,3 +1,8 @@
+'''
+author: wayne391
+email:  s101062219@gmail.com
+'''
+
 import os
 import argparse
 import torch
@@ -42,11 +47,25 @@ def parse_args(args=None, namespace=None):
         help="path to existing model ckpt",
     )
     parser.add_argument(
+        "-i",
+        "--input_dir",
+        type=str,
+        required=False,
+        help="[inference] path to input mel-spectrogram",
+    )
+    parser.add_argument(
         "-o",
         "--output_dir",
         type=str,
         required=False,
-        help="path to synthesized audio files",
+        help="[inference, validation] path to synthesized audio files",
+    )
+    parser.add_argument(
+        "-p",
+        "--is_part",
+        type=str,
+        required=False,
+        help="[inference, validation] individual harmonic and noise output",
     )
     return parser.parse_args(args=args, namespace=namespace)
 
@@ -126,10 +145,23 @@ if __name__ == '__main__':
         output_dir = 'valid_gen'
         if cmd.output_dir:
             output_dir = cmd.output_dir
-        test(args, model, loss_func, loader_valid, path_gendir=output_dir)
+        test(
+            args, 
+            model, 
+            loss_func, 
+            loader_valid, 
+            path_gendir=output_dir,
+            is_part=cmd.is_part)
     elif cmd.stage == 'inference':
-        # TBD
-        pass
+        output_dir = 'infer_gen'
+        if cmd.output_dir:
+            output_dir = cmd.output_dir
+        render(
+            args, 
+            model, 
+            path_mel_dir=cmd.input_dir, 
+            path_gendir=output_dir,
+            is_part=cmd.is_part)
     else:
           raise ValueError(f" [x] Unkown Stage: {cmd.stage }")
     
