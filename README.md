@@ -72,7 +72,7 @@ In Sawsing, we found there are buzzing artifacta in the harmonic part singals, s
 * Checkpoints
   * **Sins (DDSP-Add)**:  [`./exp/f1-full/sins/ckpts/`](./exp/f1-full/sins/ckpts/)
   * **SawSinSub (Sawsing)**:  [`./exp/f1-full/sawsinsub-256/ckpts/`](./exp/f1-full/sawsinsub-256/ckpts/)
-  * The full experiment records, reports and checkpoints can be found under the [`exp`](./exp/) folder.
+  * The full experimental records, reports and checkpoints can be found under the [`exp`](./exp/) folder.
 * Documentation
   * [DDSP Vocoders](./docs/ddsp_vocoders.md)
   * [Synthesizer Design](./docs/synth_demo.ipynb)
