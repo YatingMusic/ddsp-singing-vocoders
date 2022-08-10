@@ -82,8 +82,8 @@ In Sawsing, we found there are buzzing artifacta in the harmonic part singals, s
 @article{diffsynth,
   title={SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis},
   author={Da-Yi Wu, Wen-Yi Hsiao, Fu-Rong Yang, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang},
-  booktitle = {Proc. International Society for Music Information Retrieval},
-  year      = {2022},
+  journal = {Proc. International Society for Music Information Retrieval},
+  year    = {2022},
 }
 ```
 
