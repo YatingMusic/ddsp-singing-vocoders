@@ -7,7 +7,7 @@ Authors: [Da-Yi Wu](https://github.com/ericwudayi)\*, [Wen-Yi Hsiao](https://git
 [**Paper**](https://arxiv.org/abs/2208.04756) | [**Demo**](https://ddspvocoder.github.io/ismir-demo/) 
 
 
-Official PyTorch implementation of ISMIR2022 paper "DDSP-based Singing Vocoders: A New Subtractive-based Synthesizer and A Comprehensive Evaluation".
+Official PyTorch Implementation of ISMIR2022 paper "DDSP-based Singing Vocoders: A New Subtractive-based Synthesizer and A Comprehensive Evaluation".
 
 In this repository:
 * We propose a novel singing vocoders based on subtractive synthesizer: **SawSing**
@@ -65,7 +65,7 @@ python main.py --config ./configs/sawsinsub.yaml  \
 ```
 
 ## F. Post-Processing
-In Sawsing, we found there are buzzing artifacta in the harmonic part singals, so we develop a post-processing codes to remove it. The method is simple yet effective --- applying a voiced/unvoiced mask. For more details, please refer to [here](./postprocessing/).
+In Sawsing, we found there are buzzing artifacts in the harmonic part singals, so we develop a post-processing codes to remove them. The method is simple yet effective --- applying a voiced/unvoiced mask. For more details, please refer to [here](./postprocessing/).
 
 
 ## G. More Information
@@ -80,7 +80,7 @@ In Sawsing, we found there are buzzing artifacta in the harmonic part singals, s
 ## H. Citation
 ```
 @article{sawsing,
-  title={SawSing: A DDSP-based Singing Vocoder via Subtractive Sawtooth Waveform Synthesis},
+  title={DDSP-based Singing Vocoders: A New Subtractive-based Synthesizer and A Comprehensive Evaluation},
   author={Da-Yi Wu, Wen-Yi Hsiao, Fu-Rong Yang, Oscar Friedman, Warren Jackson, Scott Bruzenak, Yi-Wen Liu, Yi-Hsuan Yang},
   journal = {Proc. International Society for Music Information Retrieval},
   year    = {2022},
