@@ -26,17 +26,17 @@ There are two vocoders based on sawtooth synthesizer: `SawSinSub` and `SawSub`. 
 ## B. Dicsussion and Future Work
 
 ### B.1 Glitch Artifacts in Long Utterance
-We found early neural vocoders having glitch sound issues in long utterances. In speech this might not be an issue, however in singing voice where long notes are common this becomes critical. In DDSP singing vocoders we solve it with sinusoidal excitation signals. Recently, similar findings are mentioned in [5], which claming that this method "enhances the smoothness and continuity of harmonics". 
+We found early neural vocoders having glitch artifacts in long utterances. In speech this issue might not be perceived, however in singing voice where long notes are common this becomes critical. In DDSP singing vocoders we solve it with sinusoidal excitation signals. Recently, similar findings are mentioned in [5], which claming that this method "enhances the smoothness and continuity of harmonics". 
 
 ### B.2 Buzzing Artifacts in Unvoiced/Semi-Voicesd Consonants
-The buzzing artifacts of unvoiced and semi-voiced segments are from the harmonic part signals, and only occurs in the vocoders based on subtractive synthesizers (i.e. in model `SawSinSub`, `SawSub` and `Full`). Similar finding is discussed in [6]. Currently, we alleviate it by applying a Voiced/Unvoiced mask (UV mask) estimated from predicted signals on the harmonic part singals. 
+The buzzing artifacts of unvoiced and semi-voiced segments are generated from the harmonic part signals, and only occurs in the vocoders based on subtractive synthesizers (i.e. in model `SawSinSub`, `SawSub` and `Full`). Similar finding is discussed in [6]. Currently, we alleviate it by applying a Voiced/Unvoiced mask (UV mask) estimated from predicted signals on the harmonic part singals. 
 
 There are some possible directions:
-* Use filters of better capacity, instead of LTV-FIR
+* Using filters of better capacity, instead of LTV-FIR
 * Applying UV mask. 
 
 ### B.3 End-to-End Training
-DDSP-based vocoders are data efficient, intepretable and lightweight, hence it has a potential to be integrated with acoustic model which makes the end-to-end training of TTS or SVS possible. We could also rethink the role of the mel-spectrogram: It could be replaced with control parameters of synthesizers, f0, UV mask and etc.
+DDSP-based vocoders are data-efficient, intepretable and lightweight, hence it has a potential to be integrated with acoustic model which makes the end-to-end training of TTS or SVS possible. We could also start to rethink the role of mel-spectrograms: it could be replaced with control parameters of synthesizers, f0, UV mask and etc.
 
 ---
 ## C. References
