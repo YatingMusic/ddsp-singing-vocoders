@@ -34,8 +34,7 @@ python main.py --config ./configs/sawsinsub.yaml \
 ```
 3. Change `--model` argument to try different vocoders. Currently, we have 5 models: `SawSinSub` (Sawsing), `Sins` (DDSP-Add), ` DWS` (DWTS), `Full`, ` SawSub`. For more details, please refer to our documentation - [DDSP Vocoders](./docs/ddsp_vocoders.md).
 
-About our training resources:
-<GPU>
+Our training resources: single Nvidia RTX 3090 Ti GPU
 
 ## D. Validation
 Run validation: compute loss and real-time factor (RTF).
